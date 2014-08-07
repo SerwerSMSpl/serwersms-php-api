@@ -14,8 +14,8 @@ Należy również pamiętać o formacie podawanych numerów telefonów. Każdy n
 
 Wychodząc naprzeciw oczekiwaniom naszych obecnych oraz przyszłych Klientów, udostępniamy możliwość sprawdzania i testowania usługi zdalnej obsługi przez HTTPS XML API dla osób nie posiadających jeszcze kont w SerwerSMS.pl. Aby skorzystać z konta testowego należy logować się na następujące dane:
 
-    Login: demo
-    Hasło: demo
+Login: demo
+Hasło: demo
 
 Adres, na który należy wysyłać zapytania do HTTPS XML API to:
 
