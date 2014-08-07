@@ -62,6 +62,7 @@ Relizacja zapytań za pomocą przykładowego skryptu php api:
 header('Content-type: text/plain; charset=utf-8');
 
 //-------------------- wysyłka wiadomości -----------------------------------//
+
 $xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", wiadomosc => "Test wiadomosci ECO", test => 0)); //ECO
 $xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", wiadomosc => "Test wiadomosci FULL", nadawca => "INFORMACJA", test => 0)); //FULL
 $xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", wiadomosc => iconv("UTF-8","ISO-8859-2","Test wiadomości głosowej"), glosowy => 1, test => 0)); //VOICE (syntezator), tekst w kodowaniu ISO-8859-2
