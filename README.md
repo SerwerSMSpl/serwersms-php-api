@@ -1,5 +1,5 @@
 #serwersms-php-api
-==========
+
 SerwerSMS.pl umożliwia wysyłanie wiadomości przy pomocy Panelu Klienta oraz dostępnych tam funkcji jak również przy pomocy tzw. zdalnej obsługi. Dzięki drugiej z wymienionych metod możliwe jest wysyłanie oraz sprawdzanie poprawności wysłanych wiadomości jak również dostęp do innych funkcji bez konieczności logowania się do Panelu Klienta.
 
 Komunikacja z SerwerSMS.pl odbywa się poprzez wywołanie adresu URL metodą GET lub POST z odpowiednimi parametrami. Zalecane jest połączenie szyfrowane SSL (https). Jako odpowiedź zwracany jest dokument w formacie XML informujący o wyniku wywołanej akcji. 
