@@ -1,4 +1,4 @@
-﻿<?
+<?php
 class SerwerSMS {
 	//----------------------------------------------------------------------------------------------------------------------------------------//
 	// uwaga, zaleca się utworzenie osobnego loginu i hasła do komunikacji przez WebAPI.
@@ -80,6 +80,8 @@ class SerwerSMS {
         curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($postParams));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_BINARYTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
 		curl_setopt($curl,CURLOPT_TIMEOUT,60); 
         $answer = curl_exec($curl);
 		if (curl_errno($curl)) {
@@ -275,6 +277,7 @@ function PrzetworzXML($akcja,$xml_file) {
 //$xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", wiadomosc => iconv("UTF-8","ISO-8859-2","Test wiadomości głosowej"), glosowy => 1, test => 0)); //VOICE (syntezator), tekst w kodowaniu ISO-8859-2
 //$xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", plikwav => "8157049208", glosowy => 1, test => 0)); //VOICE (plik wav)
 //$xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", wiadomosc => "Temat MMSa do 40 znakow", mms => 1, plikmms => "708e4e2d1z,0d9f3f6dsd", test => 0)); //MMS
+//PrzetworzXML("wyslij_sms",$xml);
 
 //-------------- sprawdzanie raportów doręczenia ---------------//
 //$xml = SerwerSMS::sprawdz_sms(array(smsid => "ec41779ddf,215ab260df,8882bf9332"));
