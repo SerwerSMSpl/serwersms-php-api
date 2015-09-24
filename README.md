@@ -62,63 +62,63 @@ Na podstawie powyższych informacji można z powodzeniem przetestować oraz wdro
     header('Content-type: text/plain; charset=utf-8');
     
     //-------------------- wysyłka wiadomości -----------------------------------//
-$xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800,sdf989dsf,999", wiadomosc => "Test wiadomosci ECO", test => 0)); //ECO
-$xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", wiadomosc => "Test wiadomosci FULL", nadawca => "INFORMACJA", test => 0)); //FULL
-$xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", wiadomosc => iconv("UTF-8","ISO-8859-2","Test wiadomości głosowej"), glosowy => 1, test => 0)); //VOICE (syntezator), tekst w kodowaniu ISO-8859-2
-$xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", plikwav => "8157049208", glosowy => 1, test => 0)); //VOICE (plik wav)
-$xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", wiadomosc => "Temat MMSa do 40 znakow", mms => 1, plikmms => "708e4e2d1z,0d9f3f6dsd", test => 0)); //MMS
-print_r(PrzetworzXML("wyslij_sms",$xml));
-//-------------- sprawdzanie raportów doręczenia ---------------//
-$xml = SerwerSMS::sprawdz_sms();
-print_r(PrzetworzXML("sprawdz_sms",$xml));
-//-------------- sprawdzanie dostępnej ilości wiadomości ---------------//
-$xml = SerwerSMS::ilosc_sms(array());
-print_r(PrzetworzXML("ilosc_sms",$xml));
-//-------------- pobieranie wiadomości przychodzących ---------------//
-$xml = SerwerSMS::sprawdz_odpowiedzi(array()); //Wszystkie
-$xml = SerwerSMS::sprawdz_odpowiedzi(array(typ => 1)); //odpowiedzi SMS ECO
-$xml = SerwerSMS::sprawdz_odpowiedzi(array(typ => 2)); //Numer Dostępowy
-$xml = SerwerSMS::sprawdz_odpowiedzi(array(typ => 3)); //Numer Dostępowy Indywidualny
-$xml = SerwerSMS::sprawdz_odpowiedzi(array(typ => 4)); // Premium SMS
-$xml = SerwerSMS::sprawdz_odpowiedzi(array(typ => 5)); // Odbiór MMS
-print_r(PrzetworzXML("sprawdz_odpowiedzi",$xml));
-//Wiadomość spersonalizowana
-$xml = SerwerSMS::wyslij_sms(array(spersonalizowane => "500600700:Wiadomosc spersonalizowana 1]|[600700800:Wiadomosc spersonalizowana 2]", test => 1)); // SMS spersonalizowany
-//Własne identyfikatory wiadomości
-$xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", wiadomosc => "Wiadomość testowa", usmsid => "123abc1, 123abc2", test => 0)); // Własne identyfikatory wiadomości
-print_r(PrzetworzXML("wyslij_sms",$xml));
-//Pliki
-$xml = SerwerSMS::pliki(array(url_mms => $_FILES['mms']['tmp-name'])); // Wgrywanie pliku MMS
-$xml = SerwerSMS::pliki(array(lista => "mms")); // Listowanie plików MMS
-$xml = SerwerSMS::pliki(array(url_voice => "http://www.serwer.pl/kat/plik.wav")); // Wgrywanie pliku WAV
-$xml = SerwerSMS::pliki(array(lista => "voice")); // Listowanie plików VOICE
-print_r(PrzetworzXML("pliki",$xml));
-//Premium API
-$xml = SerwerSMS::premium_api(array(operacja => "lista", test => 0)); // Lista wiadomości PREMIUM
-$xml = SerwerSMS::premium_api(array(operacja => "wyslij_sms", idsms => "111111111", numer => "500600700", bramka => "71200", wiadomosc => "testowa odpowiedz premium sms")); // Wysyłanie odpowiedzi PREMIUM
-print_r(PrzetworzXML("premium_api",$xml));
-//Usuń zaplanowane
-$xml = SerwerSMS::usun_zaplanowane(array(smsid => "89df6g875sf,025701861e")); // Usuwanie zaplanowanych wysyłek
-print_r(PrzetworzXML("usun_zaplanowane",$xml));
-//Nazwa nadawcy
-$xml = SerwerSMS::nazwa_nadawcy(array(operacja => "dodanie", nazwa => "SerwerSMS")); // Dodanie nazwy nadawcy
-$xml = SerwerSMS::nazwa_nadawcy(array(operacja => "lista")); // Listowanie nazw nadawcy
-print_r(PrzetworzXML("nazwa_nadawcy",$xml));
-//HLR
-$xml = SerwerSMS::hlr(array(numer => "500600700"));
-print_r(PrzetworzXML("hlr",$xml));
-//LOOKUP
-$xml = SerwerSMS::lookup(array(numer => "500600700"));
-print_r(PrzetworzXML("lookup",$xml));
-//Premium quiz
-$xml = SerwerSMS::quiz(array(quiz => 100));
-print_r(PrzetworzXML("quiz",$xml));
-//Kontakty
-$xml = SerwerSMS::kontakty(array(operacja => "lista_grup")); // lista grup
-$xml = SerwerSMS::kontakty(array(operacja => "lista_kontaktow", grupa => "nieprzypisane")); // lista kontaktów dla grupy
-$xml = SerwerSMS::kontakty(array(operacja => "lista_kontaktow", grupa => "17310254")); // lista kontaktów dla grupy
-$xml = SerwerSMS::kontakty(array(operacja => "dodaj_grupe", grupa => "do_usuniecia")); // dodawanie nowej grupy
-$xml = SerwerSMS::kontakty(array(operacja => "dodaj_kontakt", dane => "17310747:500600700:adres@email.com:Imie:Nazwisko:Firma")); // dodawanie nowego kontaktu do grupy
-$xml = SerwerSMS::kontakty(array(operacja => "usun_grupe", grupa => "17310747")); // usuwanie grupy
-$xml = SerwerSMS::kontakty(array(operacja => "usun_kontakt", kontakt => "500600700", grupa => 17310747)); // usuwanie kontaktu z grupy
-print_r(PrzetworzXML("kontakty",$xml));
+    $xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800,sdf989dsf,999", wiadomosc => "Test wiadomosci ECO", test => 0)); //ECO
+    $xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", wiadomosc => "Test wiadomosci FULL", nadawca => "INFORMACJA", test => 0)); //FULL
+    $xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", wiadomosc => iconv("UTF-8","ISO-8859-2","Test wiadomości głosowej"), glosowy => 1, test => 0)); //VOICE (syntezator), tekst w kodowaniu ISO-8859-2
+    $xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", plikwav => "8157049208", glosowy => 1, test => 0)); //VOICE (plik wav)
+    $xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", wiadomosc => "Temat MMSa do 40 znakow", mms => 1, plikmms => "708e4e2d1z,0d9f3f6dsd", test => 0)); //MMS
+    print_r(PrzetworzXML("wyslij_sms",$xml));
+    //-------------- sprawdzanie raportów doręczenia ---------------//
+    $xml = SerwerSMS::sprawdz_sms();
+    print_r(PrzetworzXML("sprawdz_sms",$xml));
+    //-------------- sprawdzanie dostępnej ilości wiadomości ---------------//
+    $xml = SerwerSMS::ilosc_sms(array());
+    print_r(PrzetworzXML("ilosc_sms",$xml));
+    //-------------- pobieranie wiadomości przychodzących ---------------//
+    $xml = SerwerSMS::sprawdz_odpowiedzi(array()); //Wszystkie
+    $xml = SerwerSMS::sprawdz_odpowiedzi(array(typ => 1)); //odpowiedzi SMS ECO
+    $xml = SerwerSMS::sprawdz_odpowiedzi(array(typ => 2)); //Numer Dostępowy
+    $xml = SerwerSMS::sprawdz_odpowiedzi(array(typ => 3)); //Numer Dostępowy Indywidualny
+    $xml = SerwerSMS::sprawdz_odpowiedzi(array(typ => 4)); // Premium SMS
+    $xml = SerwerSMS::sprawdz_odpowiedzi(array(typ => 5)); // Odbiór MMS
+    print_r(PrzetworzXML("sprawdz_odpowiedzi",$xml));
+    //Wiadomość spersonalizowana
+    $xml = SerwerSMS::wyslij_sms(array(spersonalizowane => "500600700:Wiadomosc spersonalizowana 1]|[600700800:Wiadomosc spersonalizowana 2]", test => 1)); // SMS spersonalizowany
+    //Własne identyfikatory wiadomości
+    $xml = SerwerSMS::wyslij_sms(array(numer => "500600700,600700800", wiadomosc => "Wiadomość testowa", usmsid => "123abc1, 123abc2", test => 0)); // Własne identyfikatory wiadomości
+    print_r(PrzetworzXML("wyslij_sms",$xml));
+    //Pliki
+    $xml = SerwerSMS::pliki(array(url_mms => $_FILES['mms']['tmp-name'])); // Wgrywanie pliku MMS
+    $xml = SerwerSMS::pliki(array(lista => "mms")); // Listowanie plików MMS
+    $xml = SerwerSMS::pliki(array(url_voice => "http://www.serwer.pl/kat/plik.wav")); // Wgrywanie pliku WAV
+    $xml = SerwerSMS::pliki(array(lista => "voice")); // Listowanie plików VOICE
+    print_r(PrzetworzXML("pliki",$xml));
+    //Premium API
+    $xml = SerwerSMS::premium_api(array(operacja => "lista", test => 0)); // Lista wiadomości PREMIUM
+    $xml = SerwerSMS::premium_api(array(operacja => "wyslij_sms", idsms => "111111111", numer => "500600700", bramka => "71200", wiadomosc => "testowa odpowiedz premium sms")); // Wysyłanie odpowiedzi PREMIUM
+    print_r(PrzetworzXML("premium_api",$xml));
+    //Usuń zaplanowane
+    $xml = SerwerSMS::usun_zaplanowane(array(smsid => "89df6g875sf,025701861e")); // Usuwanie zaplanowanych wysyłek
+    print_r(PrzetworzXML("usun_zaplanowane",$xml));
+    //Nazwa nadawcy
+    $xml = SerwerSMS::nazwa_nadawcy(array(operacja => "dodanie", nazwa => "SerwerSMS")); // Dodanie nazwy nadawcy
+    $xml = SerwerSMS::nazwa_nadawcy(array(operacja => "lista")); // Listowanie nazw nadawcy
+    print_r(PrzetworzXML("nazwa_nadawcy",$xml));
+    //HLR
+    $xml = SerwerSMS::hlr(array(numer => "500600700"));
+    print_r(PrzetworzXML("hlr",$xml));
+    //LOOKUP
+    $xml = SerwerSMS::lookup(array(numer => "500600700"));
+    print_r(PrzetworzXML("lookup",$xml));
+    //Premium quiz
+    $xml = SerwerSMS::quiz(array(quiz => 100));
+    print_r(PrzetworzXML("quiz",$xml));
+    //Kontakty
+    $xml = SerwerSMS::kontakty(array(operacja => "lista_grup")); // lista grup
+    $xml = SerwerSMS::kontakty(array(operacja => "lista_kontaktow", grupa => "nieprzypisane")); // lista kontaktów dla grupy
+    $xml = SerwerSMS::kontakty(array(operacja => "lista_kontaktow", grupa => "17310254")); // lista kontaktów dla grupy
+    $xml = SerwerSMS::kontakty(array(operacja => "dodaj_grupe", grupa => "do_usuniecia")); // dodawanie nowej grupy
+    $xml = SerwerSMS::kontakty(array(operacja => "dodaj_kontakt", dane => "17310747:500600700:adres@email.com:Imie:Nazwisko:Firma")); // dodawanie nowego kontaktu do grupy
+    $xml = SerwerSMS::kontakty(array(operacja => "usun_grupe", grupa => "17310747")); // usuwanie grupy
+    $xml = SerwerSMS::kontakty(array(operacja => "usun_kontakt", kontakt => "500600700", grupa => 17310747)); // usuwanie kontaktu z grupy
+    print_r(PrzetworzXML("kontakty",$xml));
