@@ -8,7 +8,7 @@ Maksymalna wielkość pojedynczego zgłoszenia do wysyłki wiadomości to 100.00
 
 Usługa zdalnej obsługi przez HTTPS XML API umożliwia również wysyłanie informacji o raportach doręczeń oraz odpowiedziach SMS wprost na wskazany adres URL Abonenta. Aby SerwerSMS.pl wysłał automatycznie informacje o raportach doręczeń do Abonenta, należy w Panelu Klienta ustawić odpowiednie opcje w zakładce Ustawienia interfejsów (HTTPS XML API lub ustawienia w odpowiedniej sekcji np. ND/NDI). Więcej informacji na ten temat znajduje się w dokumentacji: http://dev.serwersms.pl
 
-Zalecane jest, aby komunikacja przez HTTPS XML API odbywała się z loginów utworzonych specjalnie do połączenia przez API. Konto użytkownika API można utworzyć w Panelu Klienta → Ustawienia interfejsów → HTTPS XML API → Użytkownicy.
+Zalecane jest, aby komunikacja przez HTTPS XML API odbywała się z loginów utworzonych specjalnie do połączenia przez API. Konto użytkownika API można utworzyć w Panelu Klienta → Ustawienia interfejsów → HTTP API → Użytkownicy API.
 
 Należy również pamiętać o formacie podawanych numerów telefonów. Każdy numer powinien być w formacie międzynarodowym np. w przypadku numerów polskich sieci komórkowych jest to +48500600700. Analogicznie jeśli numer jest z sieci innego kraju należy poprzedzić go numerem kierunkowym. Numery Polskie nie posiadające prefiksu +48 będą automatycznie korygowane, natomiast numery zagraniczne muszą posiadać pełny prefiks międzynarodowy poprzedzony znakiem „+” (plus). Ponadto należy zwrócić uwagę na długość adresu przesyłanego metodą GET gdyż w przypadku przesyłania większej ilości danych może nastąpić przekroczenie dozwolonych 255 znaków. W takim przypadku prosimy o przesyłanie danych metodą POST.
 
